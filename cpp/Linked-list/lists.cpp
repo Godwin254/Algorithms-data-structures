@@ -65,7 +65,7 @@ return 0;
 }
 }
 while(a!=8);
-getch();
+//getch();
 }
 void insertend()
 {
