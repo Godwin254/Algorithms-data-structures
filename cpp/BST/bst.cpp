@@ -115,22 +115,38 @@ void BST::find(int item, node **par, node **loc)
         *par = NULL;
         return;
     }
+
     if (item == root->info)
     {
         *loc = root;
         *par = NULL;
         return;
     }
+
     if (item < root->info)
-     cout<<"Tree is empty"<<endl;
-        return;
-    }
-    if (ptr != NULL)
+        ptr = root->left;
+    else
+        ptr = root->right;
+    ptrsave = root;
+    while(ptr != NULL)
     {
-        inorder(ptr->left);
-        cout<<ptr->info<<"  ";
-        inorder(ptr->right);
+        if(item == ptr->info)
+        {
+            *loc = ptr;
+            *par = ptrsave;
+            return;
+        }
+        ptrsave = ptr;
+        if (item < ptr->info)
+            ptr = ptr->left;
+        else
+            ptr = ptr->right;
+        
     }
+
+    *loc = NULL;
+    *par = ptrsave;
+     
 }
 
 /*
